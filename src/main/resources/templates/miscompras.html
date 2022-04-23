@@ -21,12 +21,17 @@
 		<div class="text-center pt-25">
 		<h3>Mi lista de compras</h3>
 		</div>
+		
 		<div class="wishlist-area pt-25 pb-50">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
+					<a th:href="@{/miscompras/(format=pdf)}" class="btn btn-danger btn-xs float-left mx-2" title="Exportar a PDF" target="_blank">PDF</a>
+					<br>
+					<br>
 						<form action="#">
 							<div class="table-content table-responsive">
+							
 								<table class="table">
 									<thead class="table-dark">
 										<tr>

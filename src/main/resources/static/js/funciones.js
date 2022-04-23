@@ -73,9 +73,7 @@ function eliminarProducto(id) {
 		if (result.isConfirmed) {
 			$.ajax({
 				url: "/admin/deleteProducto/" + id,
-				success: function(res) {
-					console.log(res);
-				}
+				
 			});
 			Swal.fire(
 				'Eliminado',
@@ -84,7 +82,7 @@ function eliminarProducto(id) {
 			)
 				.then((result) => {
 					if (result.isConfirmed) {
-						location.href = "/admin/productos";
+						location.href = "/admin/productosPage";
 					}
 				});
 
@@ -93,28 +91,49 @@ function eliminarProducto(id) {
 
 }
 
-function procesar() {
-	let timerInterval
+function eliminarAdministrador(id) {
+	
 	Swal.fire({
-		title: 'Estamos procesando su compra',
-		html: 'Por favor espere un momento',
-		timer: 5000,
-		timerProgressBar: true,
-		didOpen: () => {
-			Swal.showLoading()
-			const b = Swal.getHtmlContainer().querySelector('b')
-			timerInterval = setInterval(() => {
-				b.textContent = Swal.getTimerLeft()
-			}, 100)
-		},
-		willClose: () => {
-			clearInterval(timerInterval)
-		}
+		title: '¿Desea eliminar el administrador?',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, eliminar'
 	}).then((result) => {
-		/* Read more about handling dismissals below */
-		if (result.dismiss === Swal.DismissReason.timer) {
-			location.href = "/procesarcompra";
+		if (result.isConfirmed) {
+			$.ajax({
+				url: "/admin/deleteAdministrador/" + id,
+				success: function(res) {
+					console.log(res);
+				}
+			});
+			Swal.fire(
+				'Eliminado',
+				'Usuario] eliminado',
+				'success'
+			)
+				.then((result) => {
+					if (result.isConfirmed) {
+						location.href = "/admin/usuarios";
+					}
+				});
+
 		}
 	})
+
+}
+
+function procesar(nombre) {
+	
+	Swal.fire(
+		'Compra exitosa',
+		'Estimado '+nombre+" su compra fue realizada con exito!, puede verificar su compra la seccion de mis compras",
+		'success'
+	).then((result) => {
+					if (result.isConfirmed) {
+						location.href = "/procesarcompra";
+					}
+			});
 }
 

@@ -1,3 +1,0 @@
-# PANECILLOS
-ECOMMERCE PANECILLOS PROYECTO GRUPO 2 GESTION
-![image](https://user-images.githubusercontent.com/73073375/164606162-25c8690e-a32e-4082-965e-083d46c42e5d.png)

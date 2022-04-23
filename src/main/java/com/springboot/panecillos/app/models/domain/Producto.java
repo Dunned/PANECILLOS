@@ -24,6 +24,7 @@ public class Producto {
 	private String descripcion; 
 	private String foto="sinfoto.jpg";
 	private Long idcategoria;
+	private Integer stock; 
 	public Long getId() {
 		return id;
 	}
@@ -60,7 +61,12 @@ public class Producto {
 	public void setIdcategoria(Long idcategoria) {
 		this.idcategoria = idcategoria;
 	}
-	
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 	
 
 }

@@ -7,7 +7,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["17 Enero", "18 Enero", "19 Enero", "20 Enero", "21 Enero", "22 Enero", "23 Enero", "24 Enero", "25 Enero", "26 Enero", "27 Enero", "28 Enero", "28 Enero"],
+    labels: ["11 Abril", "12 Abril", "13 Abril", "14 Abril", "15 Abril", "16 Abril", "17 Abril", "18 Abril", "19 Abril", "20 Abril", "21 Abril", "22 Abril", "23 Abril"],
     datasets: [{
       label: "Sessions",
       lineTension: 0.5,

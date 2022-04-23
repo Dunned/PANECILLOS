@@ -42,7 +42,7 @@
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
 
-					
+
 					<li><a class="dropdown-item" th:href="@{/index}">Salir</a></li>
 				</ul></li>
 		</ul>
@@ -54,48 +54,71 @@
 		</div>
 		<div id="layoutSidenav_content">
 			<main>
-				<div class="container-fluid px-4">
-					<h1 class="mt-4">Productos</h1>
+				<div class="container px-4">
+					<h1 class="mt-4" th:if="${editar!=null}">Editar Administrador</h1>
+					<h1 class="mt-4" th:if="${editar==null}">Agregar Administrador</h1>
 					<br>
-					<div class="card-title">
-						<h3 class="mt-4 mb-5 text-center">Tabla productos</h3>
+					<div class="form-group mb-4 col-sm-7">
+						<div class="form-control "
+							style="background: #ff2d3f; border: 1px solid #ff2d2d; color: white;"
+							th:if="${error!=null}" th:text="${error}"></div>
 					</div>
-					<div class="xl-6  mb-4">
-						<a class="btn btn-success" th:href="@{/admin/crear}">Crear producto </a>
-					</div>
-					<div class="xl-6  mb-4 alert alert-success" th:if="${success!=null}" th:text="${success}">
-						
-					</div>
-					<table class="table">
-						<thead class="table-dark">
-							<tr>
-								<th>Codigo</th>
-								<th>Foto</th>
-								<th>Nombre</th>
-								<th>Precio</th>
-								<th>Stock</th>
-								<th>Descripcion</th>
-								<th>Editar</th>
-								<th>Eliminar</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="producto: ${productos}">
-								<td>[['P0-'+${producto.id}]]</td>
-								<td><img th:src="@{'/uploads/'+${producto.foto}}"
-									alt="Li's Product Image" th:style="'width: 100px;'"></td>
-								<td th:text="${producto.nombre}"></td>
-								<td th:text="${producto.precio}"></td>
-								<td th:text="${producto.stock}"></td>
-								<td th:text="${producto.descripcion}"></td>
-								<td><a th:href="@{'/admin/editarProducto/'+${producto.id}}"  class="btn btn-primary">Editar</a></td>
-								<td><a  th:onclick="eliminarProducto([[${producto.id}]])" class="btn btn-danger">Eliminar</a></td>
+					<form th:action="@{/admin/crearAdministrador}" method="post"
+						th:object="${administrador}" enctype="multipart/form-data"
+						autocomplete="off">
+						<div class="form-group row mb-4">
+							<label for="inputPassword" class="col-sm-1 col-form-label">Nombre</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="nombre"
+									placeholder="Nombre del administrador" th:field="*{nombre}">
+							</div>
+						</div>
+						<div class="form-group row mb-4">
+							<label class="col-sm-1 col-form-label">Apellido</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="descripcion"
+									placeholder="Apellido" th:field="*{apellido}">
+							</div>
+						</div>
+						<div class="form-group row mb-4">
+							<label class="col-sm-1 col-form-label">Correo</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="precio"
+									placeholder="Email" th:field="*{correo}">
+							</div>
+						</div>
+						<!--  
+						<div class="form-group row mb-4">
+							<label  class="col-sm-1 col-form-label">Password</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="password"
+									placeholder="*********" th:field="*{password}" th:if="${editar!=null}">
+								<input type="password" class="form-control" name="password"
+									placeholder="password" th:field="*{password}" th:if="${editar==null}">
+							</div>
+						</div>
+						-->
 
-							</tr>
-						</tbody>
-					</table>
-					<nav th:replace="fragments/paginator:: paginador"></nav>
+						<div class="form-group row mb-4">
+							<label for="inputPassword" class="col-sm-1 col-form-label">ROL</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{rol}">
+									<option th:value="ROLE_ADMI">ROLE_ADMI</option>
+									<option th:value="ROLE_USER">ROLE_USER</option>
+
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row mb-4">
+							<input class="btn btn-primary col-sm-2" type="submit"
+								th:if="${editar!=null}" value="Editar administrador"> <input
+								class="btn btn-primary col-sm-2" type="submit"
+								th:if="${editar==null}" value="Agregar administrador">
+						</div>
+						<input type="hidden" th:field="*{idadministrador}">
+					</form>
 				</div>
 
 			</main>

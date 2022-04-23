@@ -3767,7 +3767,7 @@ thead {
 }
 .order-button-payment a {
 	display: inline-block;
-	background: #434343 none repeat scroll 0 0;
+	background: #ffc801 none repeat scroll 0 0;
 	border: medium none;
 	color: #fff;
 	font-size: 15px;
@@ -3785,8 +3785,8 @@ thead {
 	line-height: 50px;
 }
 .order-button-payment a:hover {
-	background: #f6e711 none repeat scroll 0 0;
-	color: #434343;
+	background: #000000 none repeat scroll 0 0;
+	color: #ffc801;
 }
 /*----------------------------------------*/
 /* 6.5 Li's Login Register

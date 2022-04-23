@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.springboot.panecillos.app.dao.IProductoDao;
@@ -46,6 +48,22 @@ public class ProductoServiceImpl implements IProductoService{
 	@Override
 	public void guardar(Producto producto) {
 		productodao.save(producto);
+	}
+
+	@Override
+	public List<Producto> listarProductosPrecio(Double precio) {
+		return productodao.listarProductosPrecio(precio);
+	}
+
+	@Override
+	public List<Producto> listarProductosPrecioMenor15(Double precio) {
+		return productodao.listarProductosPrecioMenor15(precio);
+	}
+
+	@Override
+	public Page<Producto> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return productodao.findAll(pageable);
 	}
 
 }

@@ -85,10 +85,10 @@
 										</h5>
 										<h2>Pan Francés Especial</h2>
 										<h3>
-											A partir de <span>S/4.9</span>
+											A partir de <span>S/2.52</span>
 										</h3>
 										<div class="default-btn slide-btn">
-											<a class="links" th:href="@{/detalle/1}">Comprar
+											<a class="links" href="shop-left-sidebar.html">Comprar
 												ahora</a>
 										</div>
 									</div>
@@ -108,7 +108,7 @@
 											A partir de <span>S/40.00</span>
 										</h3>
 										<div class="default-btn slide-btn">
-											<a class="links" th:href="@{/detalle/21}">Comprar
+											<a class="links" href="shop-left-sidebar.html">Comprar
 												ahora</a>
 										</div>
 									</div>
@@ -128,7 +128,7 @@
 											A partir de<span>S/2.20</span>
 										</h3>
 										<div class="default-btn slide-btn">
-											<a class="links" th:href="@{/detalle/33}">Comprar
+											<a class="links" href="shop-left-sidebar.html">Comprar
 												ahora</a>
 										</div>
 									</div>
@@ -336,7 +336,34 @@
 			
 			<!-- Quick View | Modal Area End Here -->
 		</div>
-		
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+		 
+			let timerInterval
+			Swal.fire({
+				title: 'Confirmando correo electronico',
+				html: 'Por favor espere un momento',
+				timer: 4000,
+				timerProgressBar: true,
+				didOpen: () => {
+					Swal.showLoading()
+					const b = Swal.getHtmlContainer().querySelector('b')
+					timerInterval = setInterval(() => {
+						b.textContent = Swal.getTimerLeft()
+					}, 100)
+				},
+				willClose: () => {
+					clearInterval(timerInterval)
+				}
+			}).then((result) => {
+				
+				if (result.dismiss === Swal.DismissReason.timer) {
+					location.href = "/index";
+				}
+			})
+			
+
+		</script>
 		<script  th:src="@{/js/funciones.js}"></script>
 		<script th:src="@{/js/vendor/jquery-1.12.4.min.js}"></script>
 		<!-- Popper js -->
